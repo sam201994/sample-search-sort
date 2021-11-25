@@ -1,0 +1,18 @@
+@media(min-width: 1073px) {
+   .app {
+    padding: 6rem;
+  }
+}
+
+@media(max-width: 1072px) {
+  .app {
+    padding: 3rem;
+  }
+}
+
+
+@media(max-width: 555px) {
+  .app {
+    padding: 1rem;
+  }
+}
