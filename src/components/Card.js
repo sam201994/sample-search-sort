@@ -11,7 +11,7 @@ const Card = ({ data }) => {
 				 marginBottom: "1%",
 			}}
 		>
-			<img src={data.image} width="100%" />
+			<img alt="product" src={data.image} width="100%" />
 			<div style={{ padding: "1rem" }}>
 				<div style={{fontFamily: "Arial", fontWeight:800}}>{data.name}</div>
 				<div style={{fontFamily: "Arial", color:"#878484", marginTop:5}}>{data.description}</div>

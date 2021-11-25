@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "components/Card";
 import SearchBox from "components/SearchBox";
+import SortBox from "components/SortBox";
 import { MAX_RESULTS_PER_PAGE, SAMPLE_DATA, getTotlaPages } from "utils";
 import "./styles.css";
 
@@ -24,6 +25,28 @@ export default function App() {
     setData(newData);
     setCurrentPage(0);
     setTotalPages(getTotlaPages(newData));
+  };
+
+  const handleSort = (e) => {
+    const sortBy = e.target.value;
+
+    if (sortBy === "name") {
+      const newData = data.slice(0).sort(function (a, b) {
+        return a?.name?.localeCompare(b?.name);
+      });
+      setData(newData);
+      setCurrentPage(0);
+      return;
+    }
+
+    if (sortBy === "dateLastEdited") {
+      const newData = data.slice(0).sort(function (a, b) {
+        return new Date(a.dateLastEdited) - new Date(b.dateLastEdited);
+      });
+      setData(newData);
+      setCurrentPage(0);
+      return;
+    }
   };
 
   const gotoNextPage = () => {
@@ -52,9 +75,18 @@ export default function App() {
 
   const renderHeader = () => {
     return (
-      <div style={{ marginBottom: "1rem" }}>
+      <div
+        style={{
+          marginBottom: "1rem",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <div>
           <SearchBox onSubmitSearch={onSubmitSearch} />
+        </div>
+        <div>
+          <SortBox handleSort={handleSort} />
         </div>
       </div>
     );
@@ -80,7 +112,6 @@ export default function App() {
   };
 
   const renderFooter = () => {
-    console.log("currentPage", currentPage);
     return (
       <div
         style={{
@@ -103,6 +134,8 @@ export default function App() {
         <div
           style={{
             margin: "1rem",
+            marginLeft: "0.9rem",
+
             color: currentPage === 0 ? "lightgrey" : "black",
             cursor: currentPage === 0 ? "default" : "pointer",
           }}
@@ -115,6 +148,8 @@ export default function App() {
         <div
           style={{
             margin: "1rem",
+            marginRight: "0.9rem",
+
             cursor: currentPage === totalPages ? "default" : "pointer",
             color: currentPage === totalPages ? "lightgrey" : "black",
           }}
