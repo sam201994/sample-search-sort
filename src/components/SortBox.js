@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBox = ({ handleSort }) => {
 	return (
-		<div>
+		<div style={{display:"flex"}}>
 			<select
 				style={{
 					height: 30,

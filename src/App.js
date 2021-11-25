@@ -99,12 +99,14 @@ export default function App() {
     const endIndex = startIndex + MAX_RESULTS_PER_PAGE;
     return (
       <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "flex-start",
-        }}
+        // style={{
+        //   display: "flex",
+        //   flexDirection: "row",
+        //   flexWrap: "wrap",
+        //   justifyContent: "flex-start",
+        // }}
+
+        className="cards"
       >
         {data.slice(startIndex, endIndex).map((item) => {
           return <Card item={item} />;

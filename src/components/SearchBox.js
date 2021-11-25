@@ -8,14 +8,15 @@ const SearchBox = ({ onSubmitSearch }) => {
 	};
 
 	return (
-		<div>
+		<div style={{display:"flex"}}>
 			<input
 				style={{
 					height: 30,
 					borderRadius: "0.5rem",
 					border: "1px solid lightgrey",
 					padding: "0.3rem",
-					paddingRight:"1rem"
+					paddingRight:"1rem",
+					
 				}}
 				type="search"
 				placeholder="Search..."
