@@ -14,6 +14,8 @@ export default function App() {
   const onSubmitSearch = (searchTerm) => {
     if (searchTerm === "") {
       setData(allData);
+      setCurrentPage(0);
+      setTotalPages(getTotlaPages(allData));
       return;
     }
     const newData = allData.filter((item) => {
@@ -101,11 +103,11 @@ export default function App() {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
         }}
       >
         {data.slice(startIndex, endIndex).map((item) => {
-          return <Card data={item} />;
+          return <Card item={item} />;
         })}
       </div>
     );
